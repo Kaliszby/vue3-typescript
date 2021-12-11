@@ -5,7 +5,7 @@
   </div>
   <div>
     <hr />
-    <LoginForm />
+    <LoginForm user="user1" />
     <hr />
   </div>
   <router-view />

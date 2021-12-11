@@ -1,17 +1,20 @@
 <template>
   <div>
-    <h1>Login Form</h1>
+    <h1>Login</h1>
     <br />
-    <span>user</span><br />
-    <span>password</span>
+    <span>{{ user }}</span>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 
 export default defineComponent({
-  setup() {
-    return {};
+  props: ["user"],
+  setup(props) {
+    onMounted(() => {
+      console.log(props.user);
+    });
+    return { onMounted };
   },
 });
 </script>
