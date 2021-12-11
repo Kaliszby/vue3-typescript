@@ -6,17 +6,20 @@
   <div>
     <span>{{ account1.data }}</span
     ><br />
+    <span>{{ count }}</span
+    ><br />
     <button @click="onClickClear">Clear</button>
   </div>
   <router-view />
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
+import { defineComponent, ref, onMounted, reactive } from "vue";
 
 const defaultAcc = { username: "", password: "" };
 
 export default defineComponent({
   setup() {
+    const count = ref<number>(0);
     const account = reactive({ username: "admin", password: "123456" }); // input object only
     const account1 = reactive({
       data: { username: "admin", password: "123456" },
@@ -26,10 +29,21 @@ export default defineComponent({
       // account.password = "";
       account1.data = defaultAcc;
     };
+
+    const onPlus = () => {
+      count.value = count.value + 1;
+    };
+
+    onMounted(() => {
+      setInterval(onPlus, 1000);
+    });
+
     return {
       account,
       account1,
       onClickClear,
+      onMounted,
+      count,
     };
   },
 });
