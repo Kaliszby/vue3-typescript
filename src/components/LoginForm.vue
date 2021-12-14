@@ -21,7 +21,7 @@
       />
       <br />
       {{ from_data.account }}
-      <button type="button">Submit</button>
+      <button type="button" @click="onClickLogin">Submit</button>
       <button type="button" @click="onClear">Clear</button>
     </form>
   </div>
@@ -30,13 +30,19 @@
 import { defineComponent, reactive } from "vue";
 
 export default defineComponent({
+  emits: ["HandleLogin"],
   props: ["user"],
-  setup() {
+  setup(props, { emit }) {
     const from_data = reactive({ account: { username: "", password: "" } });
     const onClear = () => {
       from_data.account = { username: "", password: "" };
     };
-    return { from_data, onClear };
+
+    const onClickLogin = () => {
+      emit("HandleLogin");
+    };
+
+    return { from_data, onClear, onClickLogin };
   },
 });
 </script>

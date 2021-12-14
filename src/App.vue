@@ -5,7 +5,7 @@
   </div>
   <div>
     <hr />
-    <LoginForm user="user1" />
+    <LoginForm user="user1" @HandleLogin="onLogin" />
     <hr />
   </div>
   <router-view />
@@ -19,7 +19,10 @@ export default defineComponent({
     LoginForm,
   },
   setup() {
-    return {};
+    const onLogin = () => {
+      alert("hi");
+    };
+    return { onLogin };
   },
 });
 </script>
