@@ -39,7 +39,7 @@ export default defineComponent({
     };
 
     const onClickLogin = () => {
-      emit("HandleLogin");
+      emit("HandleLogin", from_data.account);
     };
 
     return { from_data, onClear, onClickLogin };

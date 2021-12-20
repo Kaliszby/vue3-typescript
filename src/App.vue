@@ -19,8 +19,8 @@ export default defineComponent({
     LoginForm,
   },
   setup() {
-    const onLogin = () => {
-      alert("hi");
+    const onLogin = (event: any) => {
+      alert(JSON.stringify(event));
     };
     return { onLogin };
   },
